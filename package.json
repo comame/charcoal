@@ -4,10 +4,8 @@
   "author": "pixiv",
   "license": "Apache-2.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "storybook": "start-storybook -p 6006",
     "storybook:experimental-vite": "USE_VITE=1 start-storybook -p 6006",
     "build": "yarn workspaces foreach -vpt -j unlimited run build",
@@ -83,6 +81,5 @@
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
     }
-  },
-  "packageManager": "yarn@3.1.0"
+  }
 }
