@@ -16,10 +16,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --immutable --inline-builds
-      - run: yarn build
+      - run: pnpm install --immutable --inline-builds
+      - run: pnpm build
 
   build-storybook:
     runs-on: ubuntu-latest
@@ -29,11 +29,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --immutable --inline-builds
-      - run: yarn build
-      - run: yarn build-storybook
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm build-storybook
 
   build-storybook-vite:
     runs-on: ubuntu-latest
@@ -43,11 +43,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --immutable --inline-builds
-      - run: yarn build
-      - run: yarn build-storybook
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm build-storybook
         env:
           NODE_OPTIONS: --max_old_space_size=6144
           USE_VITE: '1'
@@ -59,10 +59,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --immutable --inline-builds
-      - run: yarn test
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
 
   lint:
     runs-on: ubuntu-latest
@@ -71,10 +71,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --immutable --inline-builds
-      - run: yarn lint
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
 
   typecheck:
     runs-on: ubuntu-latest
@@ -83,11 +83,11 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --immutable --inline-builds
-      - run: yarn build
-      - run: yarn typecheck
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - run: pnpm typecheck
 
   typecheck-config:
     runs-on: ubuntu-latest
@@ -96,7 +96,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.node-version'
-          cache: yarn
+          cache: pnpm
 
-      - run: yarn install --immutable --inline-builds
-      - run: yarn typecheck:config
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck:config

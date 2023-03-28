@@ -8,14 +8,14 @@ cd $(dirname $0)/..
 default_branch=`git remote show origin | grep 'HEAD branch' | awk '{print $NF}'`
 
 if [[ $default_branch = `git symbolic-ref --short HEAD` ]]; then
-  yarn install
+  pnpm install
 
-  if [[ `git status --porcelain | grep yarn.lock` ]]; then
-    git add yarn.lock
-    git commit -m "chore: yarn install after publish"
+  if [[ `git status --porcelain | grep pnpm-*.lock` ]]; then
+    git add pnpm-*.yaml
+    git commit -m "chore: pnpm install after publish"
     git push origin $default_branch
   else
-    echo 'No diff found after yarn install'
+    echo 'No diff found after pnpm install'
   fi
 
   git push origin --tags
