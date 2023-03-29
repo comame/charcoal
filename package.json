@@ -82,5 +82,6 @@
     "hooks": {
       "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS"
     }
-  }
+  },
+  "packageManager": "pnpm@7.28.0"
 }
